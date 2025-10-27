@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <title>Make Me Millionaire</title>
+    <link rel="stylesheet" href="assets/css/fonts/ff-1.css" />
+    <link rel="stylesheet" href="assets/css/fonts/ff-3.css" />
+    <link rel="stylesheet" href="assets/css/fonts/bootstrap-icons.css" />
+    <link rel="icon" href="assets/img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+
+    <style>
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1200px;
+        }
+      }
+      .diamond-animation {
+        height: 470px;
+        position: relative;
+      }
+      .diamond-animation .base {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        display: table;
+        margin: auto;
+        height: 115px;
+        width: 199px;
+        background: url(assets/img/diamond-base.png) no-repeat scroll 0px 0px;
+        transform: translateX(-50%);
+      }
+      .diamond-animation .main {
+        position: absolute;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: 0;
+        display: table;
+        margin: auto;
+        height: 481px;
+        width: 685px;
+        background: url(assets/img/diamond-main.png) no-repeat scroll 0px 0px;
+        background-size: cover;
+        background-position: center;
+        /* animation: MainHight 2s linear; */
+        z-index: 100;
+      }
+      @keyframes MainHight {
+        0% {
+          transform: scale(0, 1);
+        }
+        100% {
+          transform: scale(1, 1);
+        }
+      }
+      .diamond-animation .main:before {
+        height: 271px;
+        width: 450px;
+        background: url(assets/img/diamond-top.png) no-repeat scroll 0px 0px;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 48px;
+        content: "";
+        display: table;
+        margin: auto;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .diamond-animation .main.active:before {
+        opacity: 1;
+        visibility: visible;
+        animation: MainTOP 2s linear;
+      }
+      @keyframes MainTOP {
+        0% {
+          transform: scale(0, 0);
+          top: 70%;
+        }
+        100% {
+          transform: scale(1, 1);
+          top: 48px;
+        }
+      }
+      .diamond-animation .base::before,
+      .diamond-animation .base::after {
+        background: url(assets/img/diamond-base-1.png) no-repeat scroll 0px 0px;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-size: cover;
+        opacity: 0.5;
+      }
+      .diamond-animation .base::before {
+        animation: circleripple 4s linear infinite;
+      }
+      .diamond-animation .base::after {
+        animation: circleripple 4s linear 2s infinite;
+      }
+      @keyframes circleripple {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.7);
+        }
+        100% {
+          transform: scale(2.4);
+          opacity: 0;
+        }
+      }
+      .inside-bitcoin {
+        /* background:url(assets/img/bitcoin-inside.png) no-repeat scroll 0px 0px; */
+        background: url(assets/img/diamond-top-coin.png) no-repeat scroll 0px
+          0px;
+        background-size: cover;
+        background-position: center;
+        width: 163px;
+        height: 111px;
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .inside-bitcoin.active {
+        opacity: 0.3;
+        visibility: visible;
+        animation: CoinFalling 2s linear;
+      }
+      @keyframes CoinFalling {
+        0% {
+          transform: rotate(360deg) scale(0, 0);
+          bottom: 0px;
+        }
+        100% {
+          transform: rotate(0deg) scale(1, 1);
+          bottom: 60px;
+        }
+      }
+      .inside-bitcoin.spincoin {
+        animation: SpinCoin 4s linear infinite;
+      }
+      @keyframes SpinCoin {
+        0% {
+          transform: rotate(360deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+      .diamond-animation .lines {
+        position: relative;
+        width: 450px;
+        margin: auto;
+        height: 271px;
+        top: 35px;
+      }
+      .diamond-animation .lines span {
+        width: 2px;
+        height: 138px;
+        background: url(assets/img/diamond-top-lines.png) no-repeat scroll 0px
+          0px;
+        position: absolute;
+        transition: all 2s ease;
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+      .diamond-animation .lines.active span {
+        transform: scaleY(1);
+      }
+      .diamond-animation .lines span.l-1 {
+        top: -63px;
+        left: 46px;
+      }
+      .diamond-animation .lines span.l-2 {
+        top: -40px;
+        left: 26px;
+      }
+      .diamond-animation .lines span.l-3 {
+        top: -12px;
+        left: 10px;
+      }
+      .diamond-animation .lines span.l-4 {
+        top: 33px;
+        left: 19px;
+      }
+      .diamond-animation .lines span.l-5 {
+        bottom: 60px;
+        left: 50px;
+      }
+      .diamond-animation .lines span.l-6 {
+        bottom: 34px;
+        left: 102px;
+      }
+      .diamond-animation .lines span.l-7 {
+        left: 160px;
+        bottom: 14px;
+      }
+      .diamond-animation .lines span.l-8 {
+        left: 226px;
+        bottom: 7px;
+      }
+      .diamond-animation .lines span.l-9 {
+        bottom: 14px;
+        right: 156px;
+      }
+      .diamond-animation .lines span.l-10 {
+        bottom: 32px;
+        right: 97px;
+      }
+      .diamond-animation .lines span.l-11 {
+        bottom: 60px;
+        right: 46px;
+      }
+      .diamond-animation .lines span.l-12 {
+        top: 33px;
+        right: 14px;
+      }
+      .diamond-animation .lines span.l-13 {
+        top: -14px;
+        right: 6px;
+      }
+      .diamond-animation .lines span.l-14 {
+        top: -41px;
+        right: 22px;
+      }
+      .diamond-animation .lines span.l-15 {
+        top: -64px;
+        right: 42px;
+      }
+      .diamond-animation .lines.active span.l-1 {
+        transition: all 2s ease 100ms;
+      }
+      .diamond-animation .lines.active span.l-2 {
+        transition: all 2s ease 300ms;
+      }
+      .diamond-animation .lines.active span.l-3 {
+        transition: all 2s ease 500ms;
+      }
+      .diamond-animation .lines.active span.l-4 {
+        transition: all 2s ease 700ms;
+      }
+      .diamond-animation .lines.active span.l-5 {
+        transition: all 2s ease 900ms;
+      }
+      .diamond-animation .lines.active span.l-6 {
+        transition: all 2s ease 1100ms;
+      }
+      .diamond-animation .lines.active span.l-7 {
+        transition: all 2s ease 1300ms;
+      }
+      .diamond-animation .lines.active span.l-8 {
+        transition: all 2s ease 1500ms;
+      }
+      .diamond-animation .lines.active span.l-9 {
+        transition: all 2s ease 1700ms;
+      }
+      .diamond-animation .lines.active span.l-10 {
+        transition: all 2s ease 1900ms;
+      }
+      .diamond-animation .lines.active span.l-11 {
+        transition: all 2s ease 2100ms;
+      }
+      .diamond-animation .lines.active span.l-12 {
+        transition: all 2s ease 2300ms;
+      }
+      .diamond-animation .lines.active span.l-13 {
+        transition: all 2s ease 2500ms;
+      }
+      .diamond-animation .lines.active span.l-14 {
+        transition: all 2s ease 2700ms;
+      }
+      .diamond-animation .lines.active span.l-15 {
+        transition: all 2s ease 2900ms;
+      }
+      .top-coin {
+        width: 356px;
+        height: 239px;
+        background: url(assets/img/diamond-top-coin.png) no-repeat scroll center
+          center;
+        background-size: cover;
+        left: 0;
+        right: 0;
+        display: table;
+        margin: auto;
+        top: 25px;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .top-coin.active {
+        opacity: 1;
+        visibility: visible;
+        animation: TopCoinFalling 3s linear;
+      }
+      @keyframes TopCoinFalling {
+        0% {
+          transform: rotateY(360deg) scale(0, 0) translateY(-1000px);
+          opacity: 0;
+        }
+        100% {
+          transform: rotateY(0deg) scale(1, 1) translateY(0px);
+          opacity: 1;
+        }
+      }
+      .diamond-grid {
+        width: 68px;
+        height: 111px;
+        background: url(assets/img/diamond-grid-1.png) no-repeat scroll center
+          center / cover;
+        -webkit-animation: bottomTotop 15s linear 0s infinite;
+        animation: bottomTotop 15s linear 0s infinite;
+        position: absolute;
+        left: 30%;
+        z-index: 0;
+      }
+      .diamond-grid-2 {
+        width: 40px;
+        height: 65px;
+        background: url(assets/img/diamond-grid-1.png) no-repeat scroll center
+          center / cover;
+        -webkit-animation: bottomTotop 16s linear 0s infinite;
+        animation: bottomTotop 16s linear 0s infinite;
+        position: absolute;
+        left: 60%;
+        z-index: 0;
+      }
+      @-webkit-keyframes bottomTotop {
+        0% {
+          -webkit-transform: translateY(1000%);
+          opacity: 0;
+        }
+        50% {
+          -webkit-transform: translateY(300%);
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: translateY(-400%);
+          opacity: 0;
+        }
+      }
+      .outer-Orbit {
+        background: url(assets/img/diamond-top-ring.png) no-repeat scroll center
+          center / cover;
+        width: 0px;
+        height: 0px;
+        top: 0px;
+        position: absolute;
+        z-index: 0;
+        transition: all 2s ease;
+        left: 0;
+        right: 0;
+        margin: auto;
+        opacity: 0;
+      }
+
+      .outer-Orbit.active {
+        width: 588px;
+        height: 344px;
+        transition: all 2s ease;
+        opacity: 1;
+      }
+      .Orbit {
+        width: 190px;
+        height: 310px;
+        -webkit-transform: scaleX(2);
+        background: transparent;
+        left: 0;
+        position: absolute;
+        top: 5px;
+        border-radius: 50%;
+        right: 0;
+        margin: auto;
+      }
+      .Orbit .rotate {
+        width: 100%;
+        height: 100%;
+        -webkit-animation: circle 10s infinite linear;
+        -webkit-transform-origin: 50% 50%;
+      }
+      .OrbitSquare {
+        width: 50px;
+        height: 50px;
+        -webkit-animation: ccircle 10s infinite linear;
+      }
+      .OrbitSquare .inner {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background: url(assets/img/OrbitSquare.png) no-repeat scroll 0px 0px /
+          cover;
+        display: block;
+        -webkit-transform: scaleX(0.5);
+        font-size: 0;
+      }
+      @-webkit-keyframes circle {
+        from {
+          -webkit-transform: rotateZ(0deg);
+        }
+        to {
+          -webkit-transform: rotateZ(360deg);
+        }
+      }
+
+      @-webkit-keyframes ccircle {
+        from {
+          -webkit-transform: rotateZ(360deg);
+        }
+        to {
+          -webkit-transform: rotateZ(0deg);
+        }
+      }
+      .gris2 {
+        width: 25px;
+        height: 82px;
+        background: url(assets/img/diamond-grid-2.png) no-repeat scroll center
+          center / cover;
+        position: absolute;
+        left: 58%;
+        z-index: 0;
+        bottom: 75px;
+        opacity: 0;
+      }
+      .diamond-animation.done .gris2 {
+        opacity: 1;
+      }
+      .square-1 {
+        width: 25px;
+        height: 26px;
+        background: url(assets/img/OrbitSquare.png) no-repeat scroll center
+          center / cover;
+        position: absolute;
+        left: 63%;
+        z-index: 0;
+        bottom: 130px;
+        opacity: 0;
+      }
+      .diamond-animation.done .square-1 {
+        opacity: 1;
+        animation: SpinCoin 4s linear infinite;
+      }
+
+      @media (max-width: 1200px) {
+        .outer-Orbit.active {
+          display: none;
+        }
+      }
+      @media (max-width: 769px) {
+        .diamond-animation {
+          scale: 0.7;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-black">
+    <!-- Header 5 -->
+    <header class="header header--7 header--fixed py-lg-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav
+              class="menu d-lg-flex justify-content-lg-between align-items-lg-center py-3 py-lg-0">
+              <div class="d-flex align-items-center justify-content-between w-100">
+                <a
+                  href="index.html"
+                  class="logo link d-inline-flex align-items-center flex-shrink-0">
+                  <img
+                    src="assets/img/logo.png"
+                    alt="logo"
+                    class="img-fluid object-fit-contain" />
+                </a>
+
+                <ul
+                  class="list list-row gap-4 rounded-pill py-lg-2 px-lg-3">
+                  <li class="menu-list mx-0">
+                    <a
+                      href="javascript:void()"
+                      style="white-space: nowrap;"
+
+                      class="link d-inline-flex justify-content-center py-2 px-4 border border-neutral-30 :border-primary-30 :bg-primary-30 rounded-pill fs-14 fw-bold text-center clr-white w-100">
+                      Login
+                    </a>
+                  </li>
+                  <li class="menu-list mx-0">
+                    <a
+                      href="javascript:void()"
+                      style="white-space: nowrap;"
+                      class="grdbg link d-inline-flex justify-content-center align-items-center gap-2 py-2 px-4 border border-primary-key :border-primary-30 bg-primary-key :bg-primary-30 rounded-pill fs-14 fw-bold text-center clr-white w-100">
+                      <span class="d-block"> Sign Up </span>
+                      <span class="d-block fs-10">
+                        <i class="bi bi-arrow-up-right"></i>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- /Header 5 -->
+    <!-- Hero 7 -->
+    <section class="hero-7 section-space-sm-bottom" id="top">
+      <div class="section-space-sm-bottom h-100 p-0">
+        <div class="container h-100">
+          <div class="row align-items-center h-100">
+            <div class="col-md-6 text-center text-md-start">
+              <h1 class="clr-white position-relative z-index-1 mb-8">
+                A Fun Space To Play And Win
+              </h1>
+              <p class="text-white mb-10">
+                Experience the joy of playing and collect real rewards for
+                winning.
+              </p>
+              <div class="position-relative z-index-1 fadeIn_bottom">
+                <a
+                  href="#0"
+                  data-target="#explore"
+                  class="scroll-to animated-btn link d-inline-flex justify-content-center align-items-center gap-2 py-4 px-6 border border-primary-key :border-primary-30 bg-primary-key :bg-primary-30 rounded-pill fw-bold clr-white :arrow-btn">
+                  <span>Play Now</span>
+                  <div class="liquid"></div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="diamond-animation mobile-hidden">
+                <div class="diamond-grid"></div>
+                <div class="diamond-grid-2"></div>
+                <div class="outer-Orbit">
+                  <div class="Orbit">
+                    <div class="rotate">
+                      <div class="OrbitSquare">
+                        <div class="inner">A</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="main">
+                  <div class="top-coin"><span></span></div>
+                  <div class="lines">
+                    <span class="l-1"></span>
+                    <span class="l-2"></span>
+                    <span class="l-3"></span>
+                    <span class="l-4"></span>
+                    <span class="l-5"></span>
+                    <span class="l-6"></span>
+                    <span class="l-7"></span>
+                    <span class="l-8"></span>
+                    <span class="l-9"></span>
+                    <span class="l-10"></span>
+                    <span class="l-11"></span>
+                    <span class="l-12"></span>
+                    <span class="l-13"></span>
+                    <span class="l-14"></span>
+                    <span class="l-15"></span>
+                  </div>
+                  <div class="inside-bitcoin"></div>
+                  <div class="gris2"></div>
+                  <div class="square-1"></div>
+                </div>
+                <div class="base"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="hero-7-main-cirlce">
+        <div class="hero-7-main-cirlce-left"></div>
+        <div class="hero-7-main-cirlce-right"></div>
+      </div> -->
+      <img
+        src="assets/img/hero-7-top-line.png"
+        alt="image"
+        class="img-fluid hero-7-shape hero-7-shape-top-line" />
+      <img
+        src="assets/img/hero-7-top-dots.png"
+        alt="image"
+        class="img-fluid hero-7-shape hero-7-shape-top-dots" />
+    </section>
+    <!-- /Hero 7 -->
+    <section
+      class="section-space-sm-top section-space-sm-bottom home-7-section-top-border position-relative animate-line-3d">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="statbox">
+              <label class="clr-neutral-80">Active Players</label>
+              <h4 class="clr-grad-8 m-0">500+</h4>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="statbox">
+              <label class="clr-neutral-80">Games</label>
+              <h4 class="clr-white m-0">150+</h4>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="statbox">
+              <label class="clr-neutral-80">Daily Tournaments</label>
+              <h4 class="clr-white m-0">100+</h4>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="statbox">
+              <label class="clr-neutral-80">Weekly Prizes </label>
+              <h4 class="clr-white m-0">$100000+</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Cta Section -->
+    <section class="crypto-section section-space-sm-bottom">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div id="ai-template-card-wrapper">
+              <div class="row gy-4">
+                <div class="col-6 col-lg-3 ai-template-card-item">
+                  <div class="ai-template-card text-center text-xl-start">
+                    <img src="assets/img/other-1.png" width="100%" />
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 ai-template-card-item">
+                  <div class="ai-template-card text-center text-xl-start">
+                    <img src="assets/img/other-2.png" width="100%" />
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 ai-template-card-item">
+                  <div class="ai-template-card text-center text-xl-start">
+                    <img src="assets/img/other-3.png" width="100%" />
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 ai-template-card-item">
+                  <div class="ai-template-card text-center text-xl-start">
+                    <img src="assets/img/other-4.png" width="100%" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="ai-template-card-wrapper-overlay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-space-sm-top section-space-bottom" id="about">
+      <div class="container">
+        <div class="abt_sec">
+          <div class="abt_sec_in how_it_works">
+            <div class="row">
+              <div class="col-md-5 d-none d-lg-block">
+                <img src="assets/img/mmmc-coin.png" />
+              </div>
+              <div class="col-md-7">
+                <span
+                  class="rounded-pill bg-primary-key bg-opacity-2 clr-white fs-12 fw-bold px-4 py-2 d-inline-block mb-5 fadeIn_bottom"
+                  >How It Works?</span
+                >
+                <!-- <h2 class="clr-white"></h2> -->
+                <div class="point">
+                  <h4 class="clr-white fw-semibold mt-2 mb-3">
+                    1. Sign Up
+                  </h4>
+                  <p class="clr-neutral-80 m-0">
+                    Create your account on the Make Me Millionaire portal.
+                  </p>
+                </div>
+                <div class="point">
+                  <h4 class="clr-white fw-semibold mt-2 mb-3">
+                    2. Select Your Play
+                  </h4>
+                  <p class="clr-neutral-80 m-0">
+                    Choose the adventure that feels exciting to you.
+                  </p>
+                </div>
+                <div class="point">
+                  <h4 class="clr-white fw-semibold mt-2 mb-3">
+                    3. Fetch Rewards
+                  </h4>
+                  <p class="clr-neutral-80 m-0">
+                    Win MMM coins and exciting prizes every time you win.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Tools Section -->
+    <section
+      class="ai-tools-section section-space-top home-7-section-top-border"
+      id="explore">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="text-center">
+              <span
+                class="rounded-pill bg-primary-key bg-opacity-2 clr-white fs-12 fw-bold px-4 py-2 d-inline-block mb-4 fadeIn_bottom"
+                >Make Me Millionaire</span
+              >
+              <h2 class="clr-white fw-bold animate-line-3d">
+                A Everyone's Platform To Turn FUN Into Actual FUNds
+              </h2>
+              <p class="clr-neutral-80 animate-line-3d">
+                No matter what game you are into, there's something here for
+                everyone to enjoy. Simply choose the game you like and let the
+                fun take the wheel!
+                And REWARDS that are just a bonus for your victories and good
+                times.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <div class="row gy-4">
+            <div class="col-lg-4">
+              <div class="row gy-4">
+                <div class="col-lg-12 col-md-6">
+                  <div
+                    class="lendearn ai-tools-card text-center overflow-hidden py-6 px-8 h-100 fadeIn_bottom"
+                    data-tilt
+                    data-tilt-max="0"
+                    data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <img
+                      src="assets/img/cricket.png"
+                      alt="image"
+                      class="img-fluid coinflip"
+                      style="max-height: 230px" />
+                    <h4 class="clr-white fs-32 fw-semibold mt-4">Cricket</h4>
+
+                    <a
+                      href="#"
+                      style="
+                        color: #c7963a;
+                        display: block;
+                        margin-top: 10px;
+                        font-size: 14px;
+                        font-weight: 700;
+                      "
+                      >Play Now ↗
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                  <div
+                    class="ai-tools-card text-center overflow-hidden py-6 px-8 h-100 fadeIn_bottom"
+                    data-tilt
+                    data-tilt-max="0"
+                    data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <img
+                      src="assets/img/football.png"
+                      alt="image"
+                      class="img-fluid coinflip" />
+                    <h4 class="clr-white fs-32 fw-semibold mt-4">Football</h4>
+                    <a
+                      href="#"
+                      style="
+                        color: #c7963a;
+                        display: block;
+                        margin-top: 10px;
+                        font-size: 14px;
+                        font-weight: 700;
+                      "
+                      >Play Now ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div
+                class="staking_box ai-tools-card text-center overflow-hidden h-100 fadeIn_bottom"
+                data-tilt
+                data-tilt-max="0"
+                data-tilt-glare
+                data-tilt-max-glare="0.15"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: space-around;
+                ">
+                
+                <div class="stakingText">
+                  <h4 class="clr-white fs-32 fw-semibold">Racing</h4>
+                  <a
+                    href="#"
+                    style="color: #c7963a; font-size: 14px; font-weight: 700"
+                    >Play Now ↗
+                  </a>
+                </div>
+                <div class="ai-tools-card-globe">
+                <img
+                  src="assets/img/racing.png"
+                  alt="image"
+                  class="img-fluid" />
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="row gy-4">
+                <div class="col-lg-12 col-md-6">
+                  <div
+                    class="ai-tools-card text-center overflow-hidden py-6 px-8 h-100 fadeIn_bottom"
+                    data-tilt
+                    data-tilt-max="0"
+                    data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <img
+                      src="assets/img/lottery-t.png"
+                      alt="image"
+                      class="img-fluid coinflip" />
+                    <h4 class="clr-white fs-32 fw-semibold mt-4">Lottery</h4>
+                    <a
+                      href="#"
+                      style="
+                        color: #c7963a;
+                        display: block;
+                        margin-top: 10px;
+                        font-size: 14px;
+                        font-weight: 700;
+                      "
+                      >Play Now ↗
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                  <div
+                    class="collateral_sec ai-tools-card text-center overflow-hidden py-6 px-8 h-100 fadeIn_bottom"
+                    data-tilt
+                    data-tilt-max="0"
+                    data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <img
+                      src="assets/img/bingo.png"
+                      alt="image"
+                      class="img-fluid coinflip " />
+
+                    <h4 class="clr-white fs-32 fw-semibold mt-4 mt-40">
+Bingo
+                    </h4>
+                    <a
+                      href="#"
+                      style="
+                        color: #c7963a;
+                        display: block;
+                        margin-top: 10px;
+                        font-size: 14px;
+                        font-weight: 700;
+                      "
+                      >Play Now ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /AI Tools Section -->
+
+    <!-- AI Application Section -->
+    <section
+      class="feat_sec ai-application-section section-space-sm-top section-space-bottom"
+      id="features">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="text-center mb-5">
+              <span
+                class="rounded-pill bg-primary-key bg-opacity-2 clr-white fs-12 fw-bold px-4 py-2 d-inline-block mb-4 fadeIn_bottom"
+                >Make Me Millionaire</span
+              >
+              <h2 class="clr-white fw-bold animate-line-3d">
+                A Premium Library of Winning Opportunities
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 ai-application-item-wrapper">
+          <div class="row gy-4 align-items-center justify-content-center">
+            <div class="col-sm-6 col-lg-4 col-xxl-3">
+              <div class="ai-app-item text-center fadeIn_bottom">
+                <img
+                  src="assets/img/tons-of-games.svg"
+                  alt="image"
+                  class="img-fluid" />
+                <h4 class="fs-18 fw-bold text-white mt-4 mb-3">
+                  Tons of Games
+                </h4>
+                <p class="mb-0 clr-neutral-80">
+                  From all-time classics to unique games with amazing twists,
+                  you have a lot of options to choose from.
+                </p>
+              </div>
+              <div class="ai-app-item text-center fadeIn_bottom">
+                <img
+                  src="assets/img/test-your-skills.svg"
+                  alt="image"
+                  class="img-fluid" />
+                <h4 class="fs-18 fw-bold text-white mt-4 mb-3">
+                  Test your Skills
+                </h4>
+                <p class="mb-0 clr-neutral-80">
+                  Players with strong gaming skills and strategy-building
+                  abilities can earn prizes based on their performance.
+                </p>
+              </div>
+            </div>
+            <div class="d-none d-lg-block col-lg-4 col-xxl-3 fadeIn_bottom">
+              <div class="radar-logo-wrapper">
+                <div class="radar"></div>
+                <div
+                  class="logo-wrapper d-flex justify-content-center align-items-center">
+                  <img
+                    src="assets/img/mmmc-coin.png"
+                    alt="image"
+                    class="img-fluid hero-7-logo" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xxl-3">
+              <div class="ai-app-item text-center fadeIn_bottom">
+                <img
+                  src="assets/img/platform-for-all.svg"
+                  alt="image"
+                  class="img-fluid" />
+                <h4 class="fs-18 fw-bold text-white mt-4 mb-3">
+                  Platform for All
+                </h4>
+                <p class="mb-0 clr-neutral-80">
+                  A genuine platform that presents equal opportunities for
+                  everyone to play, win, and earn.
+                </p>
+              </div>
+              <div class="ai-app-item text-center fadeIn_bottom">
+                <img
+                  src="assets/img/lottery-jackpots.svg"
+                  alt="image"
+                  class="img-fluid" />
+                <h4 class="fs-18 fw-bold text-white mt-4 mb-3">
+                  Lottery Jackpots
+                </h4>
+                <p class="mb-0 clr-neutral-80">
+                  Participate in regular lottery draws for a chance to win
+                  life-changing rewards.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="assets/img/ai-application-shape-line-left.png"
+        alt="image"
+        class="img-fluid ai-application-shape ai-application-shape-left" />
+      <img
+        src="assets/img/ai-application-shape-line-right.png"
+        alt="image"
+        class="img-fluid ai-application-shape ai-application-shape-right" />
+    </section>
+    <section
+      class="section-space-sm-bottom section-space-top post-container"
+      id="press-release">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <span
+              class="rounded-pill bg-primary-key bg-opacity-2 clr-white fs-12 fw-bold px-4 py-2 d-inline-block mb-4 fadeIn_bottom"
+              >Make Me Millionaire</span
+            >
+            <h2 class="clr-white fw-bold animate-line-3d">
+              Endless Fun, Endless Possibilities
+            </h2>
+            <p class="mb-0 clr-neutral-80 animte-text-from-right">
+              Whatever interests you, we've got it.
+            </p>
+          </div>
+        </div>
+        <div class="mt-10">
+          <div class="row gy-4 justify-content-center">
+            <div class="col-sm-6 col-lg-4">
+              <div
+                class="ai-template-card p-4 p-sm-6 px-xxl-10 py-xxl-12 text-center text-xl-start h-100">
+                <h4 class="clr-white fs-24 mb-4 title position-relative z-1">
+                  Challenge Yourself
+                </h4>
+                <p
+                  class="clr-neutral-80 mb-0 fs-16 content position-relative z-1">
+                  Test your skills in games where strategy and talent lead to
+                  real wins.
+                </p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div
+                class="ai-template-card p-4 p-sm-6 px-xxl-10 py-xxl-12 text-center text-xl-start h-100">
+                <h4 class="clr-white fs-24 mb-4 title position-relative z-1">
+                  Try Your Luck
+                </h4>
+                <p
+                  class="clr-neutral-80 mb-0 fs-16 content position-relative z-1">
+                  Engage in quick-play games where fortune can strike at any
+                  time.
+                </p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div
+                class="ai-template-card p-4 p-sm-6 px-xxl-10 py-xxl-12 text-center text-xl-start h-100">
+                <h4 class="clr-white fs-24 mb-4 title position-relative z-1">
+                  Big Lottery Wins
+                </h4>
+                <p
+                  class="clr-neutral-80 mb-0 fs-16 content position-relative z-1">
+                  Enter the draw, and find out if today is your lucky day! Every
+                  draw offers big prizes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /AI Application Section -->
+    <section class="cta-section-4 section-space-sm-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="cta-wrapper-4 fadeIn_bottom">
+              <div class="text-center max-text-90 m-auto">
+                <span
+                  class="rounded-pill bg-primary-key bg-opacity-2 clr-white fs-12 fw-bold px-4 py-2 d-inline-block mb-4 fadeIn_bottom"
+                  >Make Me Millionaire</span
+                >
+                <h2 class="clr-white fw-bold animate-line-3d">
+                  Be Part of the Make Me Millionaire Community
+                </h2>
+                <p class="mb-10 clr-neutral-80 animte-text-from-right">
+                  Join thousands of players turning fun into real rewards on
+                  Make Me Millionaire. Every day is a chance to change your life
+                  with an extraordinary win!
+                </p>
+              </div>
+              <img src="assets/img/map-img.png" class="img-fluid mapimg" />
+              <img
+                src="assets/img/cta-4-bg.png"
+                alt="image"
+                style="filter: sepia(1)"
+                class="img-fluid cta-wrapper-4-bg w-100 h-100 object-fit-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer 7 Section -->
+    <footer class="footer-7">
+      <div class="footer-7-wrapper">
+        <div class="container">
+          <div class="row gap-4 align-items-center justify-content-between">
+            <div class="col-xl-5">
+              <ul
+                class="list list-row flex-wrap justify-content-center justify-content-xl-start medialist">
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="link clr-neutral-80 d-flex gap-2">
+                    <i class="bi bi-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="link clr-neutral-80 d-flex gap-2">
+                    <i class="bi bi-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="link clr-neutral-80 d-flex gap-2">
+                    <i class="bi bi-youtube"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="link clr-neutral-80 d-flex gap-2">
+                    <i class="bi bi-medium"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="link clr-neutral-80 d-flex gap-2">
+                    <i class="bi bi-telegram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="link clr-neutral-80 d-flex gap-2">
+                    <i class="bi bi-discord"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-5">
+              <ul
+                class="list list-row flex-wrap gap-6 justify-content-xl-end justify-content-center">
+                <li>
+                  <a
+                    href="javascript:void()"
+                    data-target="#top"
+                    class="scroll-to link clr-neutral-80 fs-14"
+                    >Back to Top</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p class="fs-14 mb-0 text-center clr-neutral-80 copyright">
+            Copyright @2025 All Rights Reserved by Make Me Millionaire
+          </p>
+        </div>
+      </div>
+      <div class="radar-logo-wrapper">
+        <div class="radar"></div>
+        <div
+          class="logo-wrapper d-flex justify-content-center align-items-center">
+          <img
+            src="assets/img/mmmc-coin.png"
+            alt="image"
+            class="img-fluid hero-7-logo" />
+        </div>
+      </div>
+       </footer>
+    <!-- /Footer 7 Section -->
+    <!-- scrpts -->
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+      document.querySelectorAll(".scroll-to").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          const target = document.querySelector(
+            button.getAttribute("data-target")
+          );
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start", // Can also use 'center' or 'end' for different positions
+          });
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document
+            .querySelectorAll(".diamond-animation")
+            .forEach((el) => el.classList.add("done"));
+        }, 6000);
+
+        setTimeout(function () {
+          document
+            .querySelectorAll(".diamond-animation .main")
+            .forEach((el) => el.classList.add("active"));
+        }, 1000);
+
+        setTimeout(function () {
+          document
+            .querySelectorAll(".inside-bitcoin")
+            .forEach((el) => el.classList.add("active"));
+        }, 3000);
+
+        setTimeout(function () {
+          document
+            .querySelectorAll(".inside-bitcoin")
+            .forEach((el) => el.classList.add("spincoin"));
+        }, 5000);
+
+        setTimeout(function () {
+          document
+            .querySelectorAll(".diamond-animation .lines")
+            .forEach((el) => el.classList.add("active"));
+        }, 6000);
+
+        setTimeout(function () {
+          document
+            .querySelectorAll(".diamond-animation .top-coin")
+            .forEach((el) => el.classList.add("active"));
+        }, 3000);
+
+        setTimeout(function () {
+          document
+            .querySelectorAll(".diamond-animation .outer-Orbit")
+            .forEach((el) => el.classList.add("active"));
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>
